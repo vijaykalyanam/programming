@@ -90,9 +90,14 @@ unsigned int copybits(unsigned int x, unsigned int y, unsigned int pos,
 unsigned int reverseportionofbits(unsigned int x, int i, int j) {
 
 	for(;i<j; i++,j--)
+#if 1
+		if( !!(x&(1<<i)) != !!(x&(1<<j)) )
+			x^=(1<<i)|(1<<j);
+#else
 		if( ((x&(1<<i)) && !(x&(1<<j))) ||
 				(!(x&(1<<i)) && (x&(1<<j)))  )
 			x^=(1<<i)|(1<<j);
+#endif
 	return x;
 }
 

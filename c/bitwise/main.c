@@ -8,19 +8,26 @@ int main(void) {
 	unsigned int x=0x12345678;
 
 	printbinary(x);
-	printf("Rotate Left: 3\n",x=rotateleft(x,3));
-	printbinary(x);
-	printf("Rotate Right:7\n",x=rotateright(x,7));
+	printf("\nRotate Left: 3",x=rotateleft(x,3));
 	printbinary(x);
 
-	printf("Reverse Bits:\n", x=reversebits(x));
+	printbinary(x);
+	printf("\nRotate Right:7",x=rotateright(x,7));
+	printbinary(x);
+
+	printbinary(x);
+	printf("\nReverse Bits:", x=reversebits(x));
 	printbinary(x);
 
 	unsigned int mask;
+	printbinary(x);
+	printf("\nBitmanipulations:\n");
 	mask = manipulatebits(x, 7, 5);
-	puts("unset:");
+	printf("\nmask:");
+	printbinary(mask);
+	puts("unset: 7 th and 5th");
 	printbinary(x&(~mask));
-	puts("set:");
+	puts("set: 7th and 5th");
 	printbinary(x|mask);
 
 	puts("inverse:");
@@ -35,12 +42,12 @@ int main(void) {
 	puts("clear rightmost 5 bits\n");
 	printbinary(((x<<5)>>5));
 
-	puts("reverse portion of bits from pos 4 to 7\n");
+	puts("Reverse portion of bits from pos 8 to 15\n");
 	printbinary(0x12345678);
 	x=reverseportionofbits(0x12345678, 8,15);
 	printbinary(x);
 
-	printf("revesebytes :\n");
+	printf("\nRevesebytes :\n");
 	printbinary(0x12345678);
 	x=reversebytes(0x12345678);
 	printbinary(x);
