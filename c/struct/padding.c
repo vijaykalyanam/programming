@@ -1,0 +1,27 @@
+#include <stdio.h>
+/* To get Multiple of 4, 2 Bytes required. 2 Bytes added in padding */
+struct s1 {
+	char ch;
+	short int i;
+};
+
+/* 3 Byte added in padding. 1+4+(3) */
+struct s2 {
+	char ch;
+	int i;
+};
+
+struct __attribute__((packed)) s3 {
+	char ch;
+	int i;
+};
+
+int main(char argc, char **argp)
+{
+printf("Size of structure S1: %d S2 :%d S3 :%d\n",
+		sizeof(struct s1),
+		sizeof(struct s2),
+		sizeof(struct s3));
+printf("Size of Void Pointer :%u\n", sizeof(void*));
+return 0;
+}
