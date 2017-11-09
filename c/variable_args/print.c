@@ -3,7 +3,7 @@
 #include <stdarg.h>
 
 #define PRINT_STRING(__ch) 	do { 				\
-				while(*__ch != '\0') {			\
+				while(*__ch != '\0') {		\
 				write(0, (void *)__ch, 1);	\
 				__ch++;				\
 				}				\
@@ -21,6 +21,11 @@ unsigned int print(char *string,...)
 		while(*p != '\0') {
 			if (*p == '%' && *(p+1) == 's') {
 				arg=va_arg(ap, char *);
+				PRINT_STRING(arg);
+				p = p+2;
+				continue;
+			} else if (*p == '%' && *(p+1) == 'd') {
+				arg=va_arg(ap, int);
 				PRINT_STRING(arg);
 				p = p+2;
 				continue;
