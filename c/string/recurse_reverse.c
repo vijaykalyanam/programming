@@ -43,7 +43,7 @@ char* reverse_word(char* start, char* end)
 	start = reverse_word(start, end+1);
 	*start = ch;
 
-	return start +1;
+	return start + 1;
 }
 
 int main(void)
