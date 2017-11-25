@@ -1,1 +1,86 @@
-test file
+Pointers:
+
+Variable: It is a name give to one or more group of memory address(s).
+Pointer : It is variable, which always holds memory address(s).
+
+int i;	i is a variable which holds data, specifically integers only.
+
+int *p;	==> Interpret as: int* p; ===> 'p' is variable which holds data
+	which must be memory address of integer data.
+	So, p is pointer to integer.
+
+int **pp; ===>  int** pp; pp is pointer to pointer to integer.
+		To read value, we need to dereferrence two times.
+
+int a[5];  'a' is array of 5 integers and 'a' is pointing to the first element(First Integer).
+         
+ 	    Memory allocated for 5 integers sequentially and given Name to the
+	    memory address for first element.
+So, 'a' is a constant pointer. 'a' always points to the same memory address.
+
+Here, a  == int *p;
+      &a == int **pp; This is not correct.
+      &a == int (*ptr)[3];
+
+To hold some variable address, It is nothing but pointer to it.
+
+
+Array of funtion pointers:
+
+int (*functionpointer[3]) (int, char );
+
+
+int i;
+int *p;
+int **pp;
+
+int (*pa)[3];                                            
+int *pa[3]; ==> int* ap[3]; array of pointers.                                            
+
+        p = arr;
+        pa = &arr;
+        pp = ap;
+
+Above will not give any errors.
+
+
+
+pointer to constant data: Regular way.
+
+const int a = 10;
+
+int *p;
+const int *pc;==> const int* pc;
+	pc is pointer to const integer.
+
+pc = &a;  this is correct.
+p = &a;   This is not correct.
+
+
+constant pointer:
+
+pointer always point to the same memory location as assigned for the first time.
+
+example: int arr[3], char str[] = "VIJAY"; char *str = "BUDIGI";
+
+
+
+int const *ptr or const int *ptr ==> pointer to constant data.
+
+int *const ptr ==> constant pointer.
+
+
+what is the diff b/n char str[] = "VIJAY" and char *str = "BUDIGI";
+
+
+char str[] = "VIJAY";
+
+1. size will be calculated by compiler.
+2. str is constant pointer.
+
+char *s = "BUDIGI";
+
+1. String data saved in readonly section and Data is Constant.
+2. s is not constant pointer, but the data 's' is pointing to is constant.
+
+s[3] = 'z';  Bang ... Bang ... SEGFAULT.
