@@ -1,4 +1,4 @@
-//#include <stdio.h>
+#include <stdlib.h>
 #include <unistd.h>
 #include <stdarg.h>
 
@@ -9,11 +9,53 @@
 				}				\
 				} while(0)
 
+#define	SWAP(x, y)	do {			\
+			typeof((x)) __t = y;	\
+			y = x;			\
+			x = __t;		\
+			} while(0)		
+
+static void reverse(char **s)
+{
+
+	int i = 0;
+	int j = 0;
+	char *rev = *s;
+
+	while (rev[j]) ++j;
+	j--;
+
+	for (i = 0; i < j; i++, j--)
+		SWAP(rev[i], rev[j]);
+}
+
+static char *converttostring(int d)
+{
+	int i, j;
+	int n;
+	int rem;
+	n = d;
+
+	char *s = (char *) calloc(1, 7);
+
+	while (n > 0) {
+		rem = n%10;
+		n = n/10;
+		s[i++] = rem + '0';
+	}
+
+	reverse(&s);
+
+	return  s;
+}
+
 unsigned int print(char *string,...)
 {
 	int ret;
 	char *p, *arg;
 	va_list ap;
+
+	int d;
 
 	p = string;
 	if (string) {
@@ -25,8 +67,10 @@ unsigned int print(char *string,...)
 				p = p+2;
 				continue;
 			} else if (*p == '%' && *(p+1) == 'd') {
-				arg=va_arg(ap, int);
+				d = va_arg(ap, int);
+				arg = converttostring(d);
 				PRINT_STRING(arg);
+//				free(arg);
 				p = p+2;
 				continue;
 			}
@@ -42,6 +86,7 @@ unsigned int print(char *string,...)
 int main(void)
 {
 	char *str="READONLY MEM";
-	print("this is string encoded :%s\n", str);
+	int t = 1234;
+	print("this is string encoded :%s-- Int :%d\n", str, t);
 	return 0;
 }
