@@ -1,7 +1,6 @@
-#include <stdio.h>
-
 _start(int argc, char **argp)
 {
-//	printf("TEST1 nomain program\n");
-	_exit(0);
+	int ret = 0;
+	print("TEST1 nomain program **happy\n");
+	_exit(ret);
 }

@@ -6,7 +6,12 @@ int main(int argc, char **argp) {
 	char str[64] = "string";
 	char *q = "another";
 	char *r;
+	char **pp;
+pp = &p;
 
+int arr[5];
+int  *const p1 = arr;
+//p1 = arr;
 	r = p;
 	puts(p);
 	p=q;

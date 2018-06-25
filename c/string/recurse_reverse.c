@@ -52,7 +52,8 @@ int main(void)
 	char str[] = "reverse reversed, this is a string.";
 	char *ptr = str;
 
-	reverse_string(str);
+	//reverse_string(str);
+	reverse_sentence(str);
 	puts(str);
 
 	while (*ptr != '\0') {

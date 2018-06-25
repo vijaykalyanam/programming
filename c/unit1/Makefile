@@ -1,8 +1,8 @@
-TARGET = binary
-OBJS = func.o test1.o
+TARGET = printf 
+OBJS = print.o nomain.o
 
 $(TARGET):$(OBJS)
-	cc -o $(TARGET) $(OBJS)
+	cc -nostartfiles -o $(TARGET) $(OBJS)
 
 clean:
-	rm -rf test1.o func.o
+	rm -rf *.o printf
