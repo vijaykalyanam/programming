@@ -1,3 +1,20 @@
+/*
+ * Rule 1: Shifting R/L to N times, => Bits upto Nth are vanished(Not the Nth Bit).
+ *         Take the Reference always from 0 to 31.
+ *         Interpret : '31-n+1' --> SHIFTING
+ * Rule 2: Reverse Bits: SIZE-i only.
+ * Rule 3: Decrement 
+ * b :
+ * 00000000 00000000 00000000 10000000 
+ * i :7
+ * 11111111 11111111 11111111 10000000 
+ * 00000000 00000000 00000000 01111111 
+ * 00000000 00000000 00000000 11111111 
+ * mask : 00000000 00000000 00000000 11111111 
+ * decrement :127
+ * 00000000 00000000 00000000 01111111 
+ */
+
 #include <stdio.h>
 #include <string.h>
 #include <limits.h>
@@ -89,10 +106,14 @@ unsigned int copybits(unsigned int x, unsigned int y, unsigned int pos,
 
 unsigned int reverseportionofbits(unsigned int x, int i, int j) {
 
+i = 0, j = 31;
 	for(;i<j; i++,j--)
-#if 1
+#if 1 
 		if( !!(x&(1<<i)) != !!(x&(1<<j)) )
 			x^=(1<<i)|(1<<j);
+#elif 1 
+		if( !!(x&(1<<i)) != !!(x&(1<<(31-i))) )
+			x^=(1<<i)|(1<<(31-i));
 #else
 		if( ((x&(1<<i)) && !(x&(1<<j))) ||
 				(!(x&(1<<i)) && (x&(1<<j)))  )
@@ -113,6 +134,8 @@ unsigned int increment(unsigned int x) {
 
 	printf("i :%d\n", i);
 	mask = ~(~0<<i+1);
+printbinary(~0<<i+1);
+printbinary(~(~0<<i+1));
 	printbinary(mask);
 
 	return x^mask;
@@ -122,8 +145,11 @@ unsigned int decrement(unsigned int x) {
 	unsigned int mask, i;
 	for(i=0; i<=sizeof(unsigned int)*CHAR_BIT-1; i++)
 		if(x&(1<<i)) break;
-	printf("i :%d\n", i);
 	mask = (~(~0<<i))^(1<<i);
+	printf("i :%d\n", i);
+printbinary(~0<<i);
+printbinary(~(~0<<i));
+printbinary(mask);
 	printf("mask : "); printbinary(mask);
 	return x^mask;
 }

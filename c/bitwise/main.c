@@ -72,5 +72,16 @@ int main(void) {
 		printbinary(b);
 	}
 
+printf("UNDERSTANDING OF INCREMENT AND DECREMENT:\n");
+a =0x80;
+	puts("a :"); printbinary(a);
+	printf("increment :%u\n", a=decrement(a));
+	printbinary(a);
+printf("---------\n");
+b=0x80;
+	puts("b :"); printbinary(b);
+	printf("decrement :%u\n", b=decrement(b));
+	printbinary(b);
+
 	return 0;
 }
