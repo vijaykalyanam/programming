@@ -14,14 +14,21 @@ int main(int argc, char **argp)
 	int i;
 	int j;
 	int k;
-
+	int swapped;
 	for (i = 0; i < n; i++) {
+#if DEBUG
 		for (k = 0; k < n; k++)
 			printf("%d ", a[k]);
 		printf("\n");
-		for (j = i+1; j < n; j++)
+#endif	
+		swapped = 0; 
+		for (j = i+1; j < n; j++) {
 			if (a[j] < a[i])
 				SWAP(a[j], a[i]);
+			swapped = 1; 
+		}
+		if (!swapped)
+			break;
 	}
 	for (i = 0; i < n; i++)
 		printf("%d ", a[i]);

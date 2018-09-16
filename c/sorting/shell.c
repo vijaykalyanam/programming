@@ -33,6 +33,7 @@ int main(int argc, char **argp)
 	increment = n/9; //decrement - 2 prefer this always Less Nuber of loops.
 	increment = n/5; //decrement - 2 prefer this always More No of Loops.
 	increment = n/2; //decrement - 2 prefer this always More No of Loops.
+	increment = n/3;
 
 	while(increment >= 1) {
 		for (i = increment; i < n; i++) {

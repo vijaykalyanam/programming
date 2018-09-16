@@ -15,10 +15,18 @@ int main(void) {
 	printf("\nRotate Right:7",x=rotateright(x,7));
 	printbinary(x);
 
+	printf("Bits ->\n");
 	printbinary(x);
 	printf("\nReverse Bits:", x=reversebits(x));
-	printbinary(x);
 
+	printf("\nBits -> RightPropage rightmost set bit\n");
+	x = x>>5|x<<5;
+	printbinary(x);
+	printbinary(x-1);
+	printbinary(x+1);
+return 0;
+
+	printbinary(x);
 	unsigned int mask;
 	printbinary(x);
 	printf("\nBitmanipulations:\n");
