@@ -11,7 +11,7 @@
 int main() {
 
 	enum count {
-		one,
+		one = 100,
 		two,
 		three,
 		four,
@@ -21,15 +21,19 @@ int main() {
 		eight,
 		nine,
 		ten
-	}n;
+	} n;
+
 	printf("size of :%d %d\n", sizeof n, n); 
-	int *p = &n;
-	printf("%d\n", *p);
-n=4;
-n=356;
-printf("n value assigned :%d\n", n);
-int i;
-for(i=0; i<20; i++) if (i%2 == 0) if (i == four) printf("four");
-for(i=0; i<20; i++) if (i%2 == 0) if (i == n) printf("n value :%d\n", n);
+	enum count t;
+	printf("default value of enum t :%d\n", t);
+	int *p = &t;
+	printf(" -> %d\n", *p);
+	n=4;
+	printf("n value assigned :%d\n", n);
+	int i;
+
+	for(i=0; i<20; i++) if (i%2 == 0) if (i == four) printf("four"); //No output.
+	for(i=0; i<20; i++) if (i == four) printf("four");//No outut
+	for(i=0; i<20; i++) if (i%2 == 0) if (i == n) printf("n value :%d\n", n); //Value is 4
 	return 0;
 }

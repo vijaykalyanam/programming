@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdbool.h>
-#pragma (5)
+//#pragma (5)
 
 /* 
  * The structure which holds zero sized array, memory allocated
@@ -13,7 +13,7 @@
 int main(void)
 {
 
-	struct __attribute__((__packed__)) data {
+	struct __attribute__ ((__packed__)) data {
 		char buf[64];
 		int a;
 		unsigned int b;
