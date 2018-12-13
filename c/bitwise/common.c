@@ -79,11 +79,19 @@ unsigned int rotateright(unsigned int x, unsigned int i) {
 unsigned int reversebits(unsigned int x) {
 
 	unsigned int val=0;
-
-	for(int i=0; i<=SIZE; i++)
+	unsigned int i, j;
+#if 0 
+	for(i=0; i<=SIZE; i++)
 		if(x&(1<<i))
 			val |= 1<<SIZE-i;
+	printbinary(val);
 	return val;
+#else
+	for (i = 0, j = 31; i < j; i++, j--)
+		if ( !!(x & (1 << i)) != !!(x & (1 << j)))
+			x ^= (1 << i)|(1 << j);
+	return x;
+#endif
 }
 
 unsigned int manipulatebits(unsigned int x, unsigned int pos, unsigned int n) {
@@ -134,8 +142,8 @@ unsigned int increment(unsigned int x) {
 
 	printf("i :%d\n", i);
 	mask = ~(~0<<i+1);
-printbinary(~0<<i+1);
-printbinary(~(~0<<i+1));
+	printbinary(~0<<i+1);
+	printbinary(~(~0<<i+1));
 	printbinary(mask);
 
 	return x^mask;
@@ -147,9 +155,9 @@ unsigned int decrement(unsigned int x) {
 		if(x&(1<<i)) break;
 	mask = (~(~0<<i))^(1<<i);
 	printf("i :%d\n", i);
-printbinary(~0<<i);
-printbinary(~(~0<<i));
-printbinary(mask);
+	printbinary(~0<<i);
+	printbinary(~(~0<<i));
+	printbinary(mask);
 	printf("mask : "); printbinary(mask);
 	return x^mask;
 }
