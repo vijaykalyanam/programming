@@ -44,6 +44,23 @@ int *pa[3]; ==> int* ap[3]; array of pointers.
 Above will not give any errors.
 
 
+Now,
+
+Array of 1D array pointers:
+
+pointer to 1D array:	int (*pa)[4];   *pa is enclosed within ()
+					so priority goes to it first.
+
+interpretation is -> pa is pointer and the type of pointer is pointing to array of 4 integers.
+
+So,
+
+(*arap[4])   --> So, arap is array of 4 pointers. And the type of pointer is yet to figure out.
+
+To make it, pointers to 1D array,
+
+int (*arap[4])[4];
+
 
 pointer to constant data: Regular way.
 
@@ -57,12 +74,31 @@ pc = &a;  this is correct.
 p = &a;   This is not correct.
 
 
+
+Declaration for pointer to 2D array:
+
+int (*q)[m][n] = NULL; m,n can be formal arguments or auto variables.
+
+--> *q - give pointer to 1D array.
+--> *q + 1 -> will Leads SEQ FAULT.
+
+void allocate (int (**q), int m, int n)
+{
+	int (*p)[m][n];
+
+	p = malloc();
+
+	or
+
+		if q == NULL,
+			*q = (int (*)[m][n]) malloc();
+}
+
 constant pointer:
 
 pointer always point to the same memory location as assigned for the first time.
 
 example: int arr[3], char str[] = "VIJAY"; char *str = "BUDIGI";
-
 
 
 int const *ptr or const int *ptr ==> pointer to constant data.
