@@ -16,19 +16,21 @@ int main(int argc, char **argp)
 	int k;
 	int min; 
 
-	for (i = 0; i < n; i++) {
-#if DEBUG 
+	for (i = 0; i < n-1; i++) {
+#if 1 
 		for (k = 0; k < n; k++)
 			printf("%d ", a[k]);
 		printf("\n");
 #endif	
 		min = i;
-		for (j = 0; j < n; j++) {
-			if (a[min] < a[j]) {
+		//for (j = i+1; j < n-1; j++) {
+		for (j = i+1; j < n; j++) {
+			if (a[j] < a[min]) {
 				min = j;
 			}
-			SWAP(a[i], a[min]);
 		}
+		if (min != i)
+		    SWAP(a[i], a[min]);
 	}
 
 	for (i = 0; i < n; i++)

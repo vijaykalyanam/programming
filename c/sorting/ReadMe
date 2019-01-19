@@ -1,0 +1,25 @@
+
+
+
+
+1. BUBBLE SORT
+
+   1> outer loop starts from 0th element and ends at last but one element.
+   2> inner loop starts from 1st element and ends at last element.
+   3> for each complete inner loop of execution, one element is sitting at sorted position in outer loop.
+
+Uses:
+   4> suites to verify sorted or not. One Loop(inner) is enough to know that. Compl is O(n).
+   5> Best case : O(n). worst case: O(n^2)
+
+
+2. SELECTION SORT
+
+   1> outer loop starts from 0th index and ends at last but one element.
+   2> inner loop starts at 1st index and ends at last element.
+   3> for each complete inner loop, position of minimum value/index is identified.
+   4> No optmization is possible and need to swap and traverse the entire loop.
+
+Uses:
+   5> Identifying nth low or nth high value in the entire array.
+   6> Best and worst case complexity is same as O(n^2). 

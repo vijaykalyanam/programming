@@ -4,7 +4,7 @@
 void mergeandprint(int a1[], int a2[], int len1, int len2)
 {
 	int i=0,j=0,k=0, len3 = len1+len2;
-	int (*a3)[len3] = NULL;
+	int (*a3)[] = NULL;
 
 	a3 = malloc(len3*sizeof(int));
 	int *p = *a3;

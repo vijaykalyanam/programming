@@ -1,5 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
+#if 0
+static void dynamic_alloc(int (*p)[][10], int n) {
+}
+#endif
+
+static void dynamic_alloc(int m, int n, int (**p)[m][n]) {
+}
 
 int main(void)
 {
@@ -39,6 +46,12 @@ int main(void)
 		printf("%d ",*(*(*p + i)+j));
 #endif
 
+		int (*a)[] = NULL;
+		a = (int (*)[]) calloc(1, sizeof(int)*10);
 
+		/* This will give compile time error as Sizeof 1D array is not known */
+		//int (*b)[][] = NULL;
+		int (*b)[][n] = NULL;
+		dynamic_alloc(5, 10, &b);
 	return 0;
 }
