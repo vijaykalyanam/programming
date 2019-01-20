@@ -34,7 +34,7 @@ void merge(int arr[], int l, int m, int r)
     for (j = 0; j < n2; j++)
         R[j] = arr[m + 1+ j];
  
-    /* Merge the temp arrays back into arr[l..r]*/
+    /* Merge the temp arrays back into arr[l..r] */
     i = 0;
     j = 0;
     k = l;

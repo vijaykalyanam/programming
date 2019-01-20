@@ -74,6 +74,7 @@ int main(void)
 			mid = left + len-1;
 			right = (left+2*len-1 < n-1) ? (left+2*len-1) : (n-1);
 			merge(arr, left, mid, right);
+			printArray(arr, n);
 		}
 	printArray(arr, n);
 }
